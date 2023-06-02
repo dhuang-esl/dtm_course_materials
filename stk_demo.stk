@@ -1,0 +1,76 @@
+material SUBSTRATE :
+   thermal conductivity     18.9737e-6 ;
+   volumetric heat capacity 1.51745477438e-12 ;
+
+material BUMP :
+   thermal conductivity     11.1803e-6 ;
+   volumetric heat capacity 3.77725547031e-12 ;
+
+material SILICON :
+   thermal conductivity     120e-6 ;
+   volumetric heat capacity 1.631e-12 ;
+
+material BONDING :
+   thermal conductivity     38.7298e-6 ;
+   volumetric heat capacity 3.27119919387e-12 ;
+
+material TIM :
+   thermal conductivity     3e-6 ;
+   volumetric heat capacity 1.447920e-12 ;
+
+material LID :
+   thermal conductivity     380e-6 ;
+   volumetric heat capacity 3.393400e-12 ;
+
+
+top heat sink :
+   heat transfer coefficient 1.5e-8 ;
+   temperature               300 ;
+
+dimensions :
+   chip length 2000, width 2000 ;
+   cell length   100, width   100 ;
+
+layer Sub :
+   height 2.37170824513e3 ;
+   material SUBSTRATE ;
+
+layer Bump :
+   height 2.683272 ;
+   material BUMP ;
+
+layer uBump :
+   height 10.328 ;
+   material BONDING ;
+
+layer Tim :
+   height 60 ;
+   material TIM ;
+
+layer Lid :
+   height 1000 ;
+   material LID ;
+
+die Core :
+   source  739 SILICON ;
+   
+die Mem :
+   source  7 SILICON ;
+
+stack:
+   
+   layer   PACKAGING_LAYER    Lid;
+   layer   tim    Tim;
+   die     CPU_DIE       Core floorplan "flp_demo.flp" discretization 20 20;
+   layer   CPU_TO_PCB         Bump ;
+   layer   PCB_LAYER          Sub ;
+
+solver:
+   transient step 0.1, slot 0.1 ;
+   initial temperature 300.0 ;
+
+output:
+   //Tmap     (CPU_DIE,              "CPU_DIE.txt",            step ) ;
+   //Tmap     (CPU_TO_PCB,           "CPU_TO_PCB.txt",         step ) ;
+   //Tmap     (PACKAGING_LAYER,      "PACKAGING_LAYER.txt",    step ) ;
+   Tflp     (CPU_DIE,              "CPU_DIE_flp.txt", average,        step ) ;
