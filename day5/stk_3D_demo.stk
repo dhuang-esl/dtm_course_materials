@@ -61,7 +61,9 @@ stack:
    
    layer   PACKAGING_LAYER    Lid;
    layer   tim    Tim;
-   die     CPU_DIE       Core floorplan "flp_demo.flp" discretization 20 20;
+   die     CPU_DIE_TOP       Core floorplan "flp_top_demo.flp" discretization 20 20;
+   layer  INTER_CPU       uBump;
+   die     CPU_DIE_BOT       Core floorplan "flp_bot_demo.flp" discretization 20 20;
    layer   CPU_TO_PCB         Bump ;
    layer   PCB_LAYER          Sub ;
 
@@ -73,4 +75,5 @@ output:
    //Tmap     (CPU_DIE,              "CPU_DIE.txt",            step ) ;
    //Tmap     (CPU_TO_PCB,           "CPU_TO_PCB.txt",         step ) ;
    //Tmap     (PACKAGING_LAYER,      "PACKAGING_LAYER.txt",    step ) ;
-   Tflp     (CPU_DIE,              "CPU_DIE_flp.txt", average,        step ) ;
+   Tflp     (CPU_DIE_TOP,              "CPU_DIE_TOP_flp.txt", average,        step ) ;
+   Tflp     (CPU_DIE_BOT,              "CPU_DIE_BOT_flp.txt", average,        step ) ;
