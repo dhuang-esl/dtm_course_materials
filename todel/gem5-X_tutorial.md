@@ -61,6 +61,9 @@ m5 resetstats; ./sum_bench 2000000; m5 dumpstats
 
 It may take 1 or 2 minites based on your machine. Now, let's check the output results in stat.txt
 
+## Power modeling
+
+
 ## Modifying the hardware configuration
 Checkpoint is very useful when you only want to change the configurations of the hardware. For instance, let's change the frequency of the CPU. 
 
