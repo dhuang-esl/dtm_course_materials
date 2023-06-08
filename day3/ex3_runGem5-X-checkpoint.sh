@@ -5,7 +5,7 @@ gem5_path=/app/gem5-X
 ${gem5_path}/build/ARM/gem5.fast \
 -d ./output_ex1 \
 ${gem5_path}/configs/example/fs.py \
---cpu-clock=2GHz \
+--cpu-clock=2.026GHz \
 --kernel=vmlinux \
 --machine-type=VExpress_GEM5_V1 \
 --dtb-file=${gem5_path}/system/arm/dt/armv8_gem5_v1_1cpu.dtb \
